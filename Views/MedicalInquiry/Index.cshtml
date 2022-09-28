@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Form Medical Inquiry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+
+<div class="jumbotron" style="background-color: white; background-image: url('../../Asset/SHAPE.png'); background-position: right 468px; background-repeat: no-repeat; margin-bottom:130px;">
+    <div class="container" style="padding-top:40px;">
+        <form action="/" method="post" id="InsertFormMI">
+
+            <h3 style="font-size:18px;">Formulir Pertanyaan/Informasi Medis</h3>
+            <h4 style="font-size:16px;"> <i>Medical Inquiry Form </i></h4>
+            <hr />
+            <br />
+            <h4 class="title">Pertanyaan/Pengajuan Informasi Terkait Produk</h4>
+            <h5 class="subtitle"><i>Product-related inquiries/submissions</i></h5>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Nama Product<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Product Name <b class="required">*</b></p>
+                    <select class="form-control" id="ProductName" required>
+                        <option value="value">text</option>
+                    </select>
+
+                </div>
+                <div class="col-md-12">
+                    <p class="titleQ">Pertanyaan<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Question <b class="required">*</b></p>
+                    <textarea class="form-control" id="Question" required></textarea>
+
+                </div>
+
+            </div>
+
+            <h4 class="title">Silakan Masukkan Informasi Kontak Anda</h4>
+            <h5 class="subtitle"><i>Please Enter Your Contact Information</i></h5>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="titleQ">Nama<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Name <b class="required">*</b></p>
+                    <input type="text" class="form-control" name="name" value="" id="Name" required />
+                </div>
+                <div class="col-md-4">
+                    <p class="titleQ">Pilih Yang Sesuai Dengan Anda<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Choose the appropriate one for you <b class="required">*</b></p>
+                    <select class="form-control" id="Approriate" required>
+                        <option value="Pasien/Patient">Pasien/Patient</option>
+                        <option value="Dokter/Physician">Dokter/Physician</option>
+                        <option value="Apoteker/Phamacist">Apoteker/Phamacist</option>
+                        <option value="Perawat/Nurse">Perawat/Nurse</option>
+                        <option value="Tenaga Kesehatan Lainnya/Other HCP">Tenaga Kesehatan Lainnya/Other HCP</option>
+
+                        <option value="Peneliti/Researcher">Peneliti/Researcher</option>
+                        <option value="Media/Media">Media/Media</option>
+                        <option value="Other">Lainnya/Other</option>
+                    </select>
+                    <br />
+                    <input type="text" style="display:none;" class="form-control" id="OtherApproriate" name="name" value="" placeholder="Input Other " />
+                </div>
+
+                <div class="col-md-4">
+                    <p class="titleQ">Telepon<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Telephone <b class="required">*</b></p>
+                    <input type="number" name="name" value="" required class="form-control" id="Telephone" />
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="titleQ">Email<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Email <b class="required">*</b></p>
+                    <input type="email" required class="form-control" id="Email" name="name" value="" />
+                </div>
+                <div class="col-md-4">
+                    <p class="titleQ">Negara<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Country<b class="required">*</b></p>
+                    <input type="text" required class="form-control" id="Country" name="name" value="" />
+                </div>
+            </div>
+
+
+            <input type="hidden" id="MultiFileName" name="name" value="" />
+
+            @*captcha site key dev 6LfqeuMfAAAAADZPirJGVS-yI02w9Dn-typzn10i*@
+            @*captcha site key prod 6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38*@
+            <div id="CaptchaGoogleMI" style="height: 100px; position: relative; top: 134px;" class="g-recaptcha" data-sitekey="6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38"></div>
+
+            <button class="btn btn-success form-control btn-lg submitformmi" style="height: 50px; margin-top: 150px;">SUBMIT FORM</button>
+
+        </form>
+
+
+        <br />
+        <br />
+
+        <div class="row" style="margin-top:-450px;padding-top:120px;">
+            <form action="/" method="post" class="UploadFileSupportMI" id="UploadFileSupport" enctype="multipart/form-data">
+                <div class="col-md-6">
+
+                    <p class="titleQ">Upload File Pendukung (Anda Bisa Mengupload Lebih dari Satu File )</p>
+
+                    <p style="margin-top:-11px;" class="SubtitleQ">Upload Supporting Files (You Can Uploaded More Than 1 File)</p>
+                    <input type="file" onclick="ShowUploadFiles()" id="files" name="Image" multiple class="form-control" required>
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <button style="margin-top: 45px;" class="btn btn-primary UploadImage" type="submit">
+                        <i class="fa fa-upload"></i>
+
+                        Upload Files
+                    </button>
+                    <label class="loadingImage" style="margin-top:55px;display:none;">
+                        <i class="fa fa-spinner fa-spin fa-fw"></i> Loading ...
+                    </label>
+                    <label style="color: forestgreen; margin-top: 55px; display: none;" class="UploadedImage">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        Uploaded
+                    </label>
+
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Secure Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+<div class="jumbotron" style="background-image: url('../../Asset/bgslider.png'); background-position: right;">
+
+    <div class="row" style="margin-top:50px;">
+        <div class="col-md-6" style="height:500px;background-image:url('../../Asset/loginadmin.png');background-size:contain;background-repeat:no-repeat;background-position:center;">
+
+
+        </div>
+        <form action="/" method="post" id="LoginForm">
+            <div class="col-md-6" style="padding:100px;">
+                <h3>Sign In</h3>
+                <h5>
+                    Selamat Datang! Silahkan Masukkan User & Password Anda.
+
+                </h5>
+                <br />
+                <label>Username</label>
+                <input id="Username" type="text" class="form-control" name="name" value="" required/>
+                <br />
+                <label>Password</label>
+                <input id="Password" type="password" class="form-control" name="name" value="" required/>
+                <br />
+                <button class="btn btn-success" type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+
+    </div>

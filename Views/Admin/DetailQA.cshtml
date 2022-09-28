@@ -1,0 +1,234 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    String NoLetter = ViewBag.Title;
+    String NoDocument = Request["NoDocument"].ToString();
+    String EffectiveDate = Request["EffectiveDate"].ToString();
+}
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+    .headertitle{
+        font-size:12px;
+    }
+
+</style>
+
+    <div class="jumbotron" style="background-image: url('../../Asset/bgslider.png'); background-position: right;">
+        <div class="container" style="padding-top:10px;">
+            <button class="btn btn-default" id="printPageButton" style="margin-bottom:20px;" onClick="window.print();"> <i class="fa fa-print"></i>  Print / Save </button>
+
+            <table class="table-bordered" style="width:100%;">
+                <tr>
+                    <td rowspan="2" style="padding:20px;">
+                        <img style="width:100px;" src="~/Asset/Etana_logo.png" class="img-responsive" alt="Alternate Text" />
+                        <br />
+                        <h5 class="headertitle">PT ETANA BIOTECHNOLOGIES INDONESIA  </h5>
+                    </td>
+                    <td rowspan="2" style="padding:20px;">
+                    <td rowspan="2" style="padding:20px;">
+                        <center>
+                            <h4 class="headertitle">PENANGANAN KELUHAN PELANGGAN</h4>
+                        </center>
+                        <center>
+                            <h4 class="headertitle"> <I>CUSTOMER COMPLAINTS HANDLING</I></h4>
+                        </center>
+                    </td>
+                    <td style="padding:20px;">
+                        <h4 class="headertitle">Document No :</h4>
+                        <h4 class="headertitle">@NoDocument.Replace("_", "/")</h4>
+                    </td>
+                    <td style="padding:20px;">
+                        <h4 class="headertitle">Effective Date :</h4>
+                        <h4 class="headertitle">@EffectiveDate.Replace("_", "/")</h4>
+                    </td>
+                </tr>
+
+
+
+
+            </table>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">No Keluhan Pelanggan</p>
+                    <p class="SubtitleQ">Customer Complaint No.</p>
+                    <input type="text" id="QANoLetter" name="name" value="" class="form-control" readonly />
+
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Nama Pengguna Produk</p>
+                    <p class="SubtitleQ">User Name Product</p>
+                    <input type="text" id="QAUsername" name="name" value="" class="form-control" readonly />
+
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Tanggal  <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Data</p>
+                    <input type="text" id="QADate" name="name" value="" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Jenis Pelanggan</p>
+                    <p class="SubtitleQ">Customer Type</p>
+                    <input type="text" id="QAIdCustomerType" name="name" value="" class="form-control" readonly />
+
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Nama Pelapor (personel / instansi) <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Reporter Name (personnel/agency) <b class="required">*</b></p>
+                    <input type="text" id="QACreator" name="name" value="" class="form-control" readonly />
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Alamat</p>
+                    <p class="SubtitleQ">Address</p>
+                    <textarea class="form-control" id="QAAddress" readonly></textarea>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">No. Telepon/Fax <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Telephone/Fax No. <b class="required">*</b></p>
+
+                    <input type="text" id="QATelephone" name="name" value="" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Nama Produk <b class="required">*</b></p>
+                    <p class="SubtitleQ">Product Name <b class="required">*</b></p>
+
+                    <input type="text" id="QAProduct" name="name" value="" class="form-control" readonly />
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">No. Bets </p>
+                    <p class="SubtitleQ">Batch No.</p>
+                    <input type="text" name="name" value="" class="form-control" id="QABatchNo" readonly />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Tanggal Kadaluarsa</p>
+                    <p class="SubtitleQ">Expire Date</p>
+                    <input type="text" class="form-control" id="QAExpDate" name="name" value="" readonly />
+
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Tanggal Pembelian</p>
+                    <p class="SubtitleQ">Buying Date</p>
+                    <input type="text" readonly name="name" id="QABuyDate" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Jumlah yang dikeluhkan</p>
+                    <p class="SubtitleQ">Amount Complained</p>
+                    <input readonly type="text" id="QAAmountComplained" class="form-control" name="name" value="" />
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Jumlah contoh</p>
+                    <p class="SubtitleQ">Example Amount</p>
+                    <input type="text" readonly id="QAExampleAmount" name="name" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">
+                        Kategori Keluhan
+                    </p>
+                    <p class="SubtitleQ">Complaint Category</p>
+
+                    <input type="text" id="QAComplaintCategory" name="name" value="" class="form-control" readonly />
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Kriteria Keluhan Kualitas Produk</p>
+                    <p class="SubtitleQ">Product Quality complaint Criteria</p>
+
+                    <input type="text" id="QAComplaintCriteria" name="name" value="" class="form-control" readonly />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Kondisi Pemakai dan Produk</p>
+                    <p class="SubtitleQ">User and Product Condition</p>
+                    <textarea class="form-control" id="QAProductCondition" readonly></textarea>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Deskripsi Keluhan (Termasuk tindakan awal dan tindak lanjut awal yang diambil)</p>
+                    <p class="SubtitleQ">Complaint Description:</p>
+                    <textarea class="form-control" id="QADescription" readonly></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Pelapor <b class="required">*</b></p>
+                    <p class="SubtitleQ">Reporter <b class="required">*</b></p>
+                    <input type="text" id="QAReporter" name="name" value="" class="form-control" readonly />
+
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                    <p class="titleQ">Penerima<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Receiver</p>
+                    <input type="text" id="QAReceive" name="name" value="" class="form-control" readonly />
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+    var NoLetter = '@NoLetter';
+</script>

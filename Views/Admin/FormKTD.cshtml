@@ -1,0 +1,151 @@
+﻿@using PharmacovigilanceEtana.Models
+@{
+    ViewBag.Title = "Form QA";
+    List<ListStatus> listStatuses = ViewBag.ListStatus;
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>FormQA</h2>
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+<div class="jumbotron" style="background-image: url('../../Asset/bgslider.png'); background-position: right;height:100%;">
+
+    <div class="container well" style="background:white;padding:20px;">
+
+        <h3 class="title">List Input Form KTD</h3>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-bordered ListFormKTD">
+                <thead>
+                    <tr>
+                        <td>Lettern No</td>
+                        <td>Tanggal Laporan</td>
+                        <td>Nama Pelapor</td>
+                        <td>Nama Pasien</td>
+                        <td>Nama Produk Internal</td>
+                        <td>Nama Produk External</td>
+                        <td>Deskripsi Keluhan</td>
+                        <td>Penerima Laporan</td>
+                        <td>Penerima Laporan</td>
+
+                        <td>Tlp/Email Pelapor</td>
+                        <td>Jenis Kelamin Pasien</td>
+                        <td>Umur Pasien</td>
+                        <td>Kapan Kejadian Tidak Diinginkan Mulai </td>
+                        <td>Kapan Kejadian Tidak Diinginkan Berhenti</td>
+                        <td>Bersedia Di Hubungi </td>
+
+
+                        <td>Status</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<form action="/" method="post" id="UpdatePenerima">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Form Penerima Laporan</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Penerima Laporan <b style="color:red;">*</b></label>
+                    <input type="text" id="Receiver" name="name" value="" class="form-control" required />
+                    <input type="hidden" id="IdLaporan" value="" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<!-- Modal -->
+<form action="/" method="post" id="UpdateStatusKTD">
+    <div class="modal fade" id="modalUpdateStatusKTD" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Status</h4>
+                </div>
+                <div class="modal-body">
+                    
+                    <input type="hidden" id="zId" name="name" value="" class="form-control" required />
+                    <label>Status<b style="color:red;">*</b></label>
+                    <select class="form-control" required id="ListStatus">
+                        <option value="">Pilih Status</option>
+                        @foreach (var item in listStatuses)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

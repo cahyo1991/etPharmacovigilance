@@ -1,0 +1,175 @@
+﻿
+@{
+    ViewBag.Title = "Form Quality Assurance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required{
+        color:red;
+    }
+</style>
+<form action="/" method="post" id="SubmitFormQA">
+    <div class="jumbotron" style="background-color: white; background-image: url('../../Asset/SHAPE.png'); background-position: right 568px; background-repeat: no-repeat; ">
+        <div class="container" style="padding-top:40px;">
+            <h3 style="font-size:18px;">Form Penanganan Keluhan Pelanggan</h3>
+            <h4 style="font-size:18px;"> <i>Customer Complaints Handling </i></h4>
+            <hr />
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Nama Penggguna Produk<b class="required">*</b></p>
+                    <p class="SubtitleQ">User Name Product<b class="required">*</b></p>
+                    <input type="text" id="QAUserNameProduct" class="form-control" name="name" value="" required />
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">
+                        Kategori Keluhan
+                    </p>
+                    <p class="SubtitleQ">Complaint Category</p>
+                    <select class="form-control" id="QAIdComplaintCategory">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Jenis Pelanggan</p>
+                    <p class="SubtitleQ">Customer Type</p>
+                    <select class="form-control" id="QAIdCustomerType">
+                    </select>
+                    <div class="othersCT" style="display:none;">
+                        <p class="titleQ">Lain Lain Jenis Pelanggan <b class="required">*</b> </p>
+                        <p class="SubtitleQ">Others Customer Type</p>
+                        <input id="QACustomerTypeOthers" type="text" name="name" value="" class="form-control" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Nama Pelapor (personel / instansi) <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Reporter Name (personnel/agency) <b class="required">*</b></p>
+                    <input type="text" id="QACreator" name="name" value="" class="form-control" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Alamat</p>
+                    <p class="SubtitleQ">Address</p>
+                    <textarea class="form-control" id="QAAddress"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">No. Telepon/Fax <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Telephone/Fax No. <b class="required">*</b></p>
+                    <input type="text" name="name" value="" class="form-control" id="QATelephone" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Nama Produk <b class="required">*</b></p>
+                    <p class="SubtitleQ">Product Name <b class="required">*</b></p>
+                    <select class="form-control" required id="QAIdProduct">
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">No. Bets </p>
+                    <p class="SubtitleQ">Batch No.</p>
+                    <input type="text" name="name" value="" class="form-control" id="QABatchNo" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Tanggal Kadaluarsa</p>
+                    <p class="SubtitleQ">Expire Date</p>
+                    <input type="date" class="form-control" id="QAExpDate" name="name" value="" />
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Tanggal Pembelian</p>
+                    <p class="SubtitleQ">Buying Date</p>
+                    <input type="date" name="name" id="QABuyDate" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Jumlah yang dikeluhkan</p>
+                    <p class="SubtitleQ">Amount Complained</p>
+                    <input type="number" id="QAAmountComplained" class="form-control" name="name" value="" />
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Jumlah contoh</p>
+                    <p class="SubtitleQ">Example Amount</p>
+                    <input type="number" id="QAExampleAmount" name="name" value="" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-6">
+                    @*<p class="titleQ">Kriteria Keluhan Kualitas Produk</p>*@
+                    @*<p class="SubtitleQ">Product Quality complaint Criteria</p>*@
+                    <select style="display:none;" class="form-control" id="QAIdComplaintCriteria">
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Kondisi Pemakai dan Produk</p>
+                    <p class="SubtitleQ">User and Product Condition</p>
+                    <textarea class="form-control" id="QAProductCondition"></textarea>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Deskripsi Keluhan (Termasuk tindakan awal dan tindak lanjut awal yang diambil) <b class="required">*</b></p>
+                    <p class="SubtitleQ">Complaint Description <b class="required">*</b> </p>
+                    <textarea class="form-control" id="QADescription" required></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                @*captcha site key dev 6LfqeuMfAAAAADZPirJGVS-yI02w9Dn-typzn10i*@
+                @*captcha site key prod 6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38*@
+                <div id="CaptchaGoogle" style="height: 100px; margin-top:20px;" class="g-recaptcha" data-sitekey="6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38"></div>
+
+            </div>
+
+
+            <hr />
+            <button type="submit" class="btn btn-success form-control btn-lg" style="height:50px;">SUBMIT FORM</button>
+        </div>
+    </div>
+</form>

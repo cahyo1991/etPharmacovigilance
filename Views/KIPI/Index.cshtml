@@ -1,0 +1,550 @@
+﻿@using PharmacovigilanceEtana.Models;
+@{
+    List<ClinicalSymptom> cs = ViewBag.ClinicalSymptom;
+    ViewBag.Title = "Form KIPI";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+    .footerweb{
+        display:none;
+    }
+</style>
+
+<div class="jumbotron" style="background-color: white; background-image: url('../../Asset/SHAPE.png'); background-position: right 3768px; background-repeat: no-repeat; ">
+    <div class="container" style="padding-top:40px;">
+        <form action="/" method="post" id="FormKIPI">
+            <h3 style="font-size:18px;">Formulir Kejadian Ikutan Pasca Imunisasi (KIPI)</h3>
+            <h4 style="font-size:16px;"> <i>Adverse Event Following Immunization Form</i></h4>
+
+            <hr />
+            <br />
+            <h4 class="title">
+                Identitas Pasien
+            </h4>
+            <h5 class="subtitle">
+                <i>
+                    Patient Identity
+                </i>
+            </h5>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Nama <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Name <b class="required">*</b></p>
+                    <input type="text" class="form-control" id="Name" name="name" value="" required />
+                    <p class="titleQ">Nama Orang Tua </p>
+                    <p class="SubtitleQ">Parents Name </p>
+                    <input type="text" class="form-control" id="Parent" name="name" value="" />
+                    <p class="titleQ">Alamat</p>
+                    <p class="SubtitleQ">Address</p>
+                    <textarea class="form-control" id="Address"></textarea>
+                    <p class="titleQ">Kab / Kota</p>
+                    <p class="SubtitleQ">City</p>
+                    <select class="form-control ListCity" id="City">
+                    </select>
+                    <p class="titleQ">Telp / Hp <b class="required">*</b></p>
+                    <p class="SubtitleQ">Phone <b class="required">*</b></p>
+                    <input type="text" class="form-control" name="name" value="" id="Phone" required />
+                    <p class="titleQ">Email <b class="required">*</b></p>
+                    <p class="SubtitleQ">Email <b class="required">*</b></p>
+                    <input type="email" class="form-control" name="name" value="" id="Email" required />
+
+
+
+                </div>
+                <div class="col-md-6">
+
+
+                    <p class="titleQ">Kode Pos </p>
+                    <p class="SubtitleQ">Postal Code </p>
+                    <input type="text" class="form-control" name="name" value="" id="PostalCode" />
+                    <p class="titleQ">Umur <b class="required">*</b></p>
+                    <p class="SubtitleQ">Age <b class="required">*</b></p>
+                    <input type="number" class="form-control" name="name" value="" id="Age" required />
+                    <p class="titleQ">Jenis Kelamin <b class="required">*</b></p>
+                    <p class="SubtitleQ">Sex <b class="required">*</b></p>
+                    <select class="form-control" id="Sex" required>
+                        <option value="">Pilih / Choose</option>
+                        <option value="Male">Laki Laki / Male</option>
+                        <option value="Female">Perempuan / Female</option>
+                    </select>
+                    <p class="titleQ">Bagi Wanita Usia Subur (WUS)</p>
+                    <p class="SubtitleQ">For Women of Childbearing Age (WUS) </p>
+                    <select class="form-control" id="Wus">
+                        <option value="">Pilih / Choose</option>
+                        <option value="Pregnant">Hamil / Pregnant</option>
+                        <option value="Not Pregnant">Tidak Hamil / Not Pregnant</option>
+                    </select>
+                    <p class="titleQ">Keadaan Umum Sebelum Imunisasi</p>
+                    <p class="SubtitleQ">General condition before immunization</p>
+                    <input type="text" class="form-control" name="name" id="KU" value="" />
+                </div>
+            </div>
+            <h4 class="title">
+                Identitas Pelapor
+            </h4>
+            <h5 class="subtitle">
+                <i>
+                    Reporting Identity
+
+                </i>
+            </h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Nama Pelapor <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Reporter Name <b class="required">*</b></p>
+                    <input type="text" class="form-control" id="ReporterName" name="name" value="" required />
+                    <p class="titleQ">Alamat</p>
+                    <p class="SubtitleQ">Address</p>
+                    <textarea class="form-control" id="ReporterAddress"></textarea>
+
+                    <p class="titleQ">Kab/Kota</p>
+                    <p class="SubtitleQ">City</p>
+                    <select class="form-control ListCity" id="ReporterCity">
+                    </select>
+
+
+                </div>
+                <div class="col-md-6">
+
+                    <p class="titleQ">Telp / Hp <b class="required">*</b></p>
+                    <p class="SubtitleQ">Phone <b class="required">*</b></p>
+                    <input type="text" class="form-control" name="name" value="" id="RepoterPhone" required />
+
+                    <p class="titleQ">Email<b class="required">*</b></p>
+                    <p class="SubtitleQ">Email <b class="required">*</b></p>
+                    <input type="email" class="form-control" name="name" value="" id="RepoterEmail" required />
+
+                    <p class="titleQ">Kode Pos </p>
+                    <p class="SubtitleQ">Postal Code </p>
+                    <input type="number" class="form-control" name="name" value="" id="ReporterPostalCode" />
+                    <p class="titleQ">Pemberi Imunisasi <b class="required">*</b></p>
+                    <p class="SubtitleQ">Immunization Giver<b class="required">*</b></p>
+                    <input type="text" placeholder="Dokter/Bidan/Perawat/Jurim/Others " class="form-control" name="name" value="" id="ImmunizationGiver" required />
+                </div>
+            </div>
+
+
+            <h4 class="title">
+                Vaksin-vaksin yang diberikan dalam 4 minggu terakhir
+            </h4>
+            <h5 class="subtitle">
+                <i>
+                    Vaccines administered in the last 4 weeks (vaccine suspected to be related with the AEFI or other vaccines)
+                </i>
+            </h5>
+
+            <a href="javascript:" class="btn btn-success MoreVaccineProduct">+ Masukkan Vaksin Lainnya / Add More Vaccine</a>
+
+            <div class="VaccinteItem">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5"> <hr /></div>
+                    <div class="col-md-2 col-sm-2 col-xs-2"> <h3 style="text-align:center;margin-top:0px;">Vaccine 1</h3> </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5"> <hr /></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="titleQ">Nama Vaksin <b class="required">*</b></p>
+                        <p class="SubtitleQ">Vaccine Name<b class="required">*</b></p>
+                        <select class="form-control" id="V_IdVaccine0">
+                            <option value="value">text</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Nomor Bets</p>
+                        <p class="SubtitleQ">Batch Number</p>
+                        <input type="text" class="form-control" id="V_BatchNo0" name="name" value="" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Produsen</p>
+                        <p class="SubtitleQ">Manufacturer</p>
+                        <input type="text" class="form-control" id="V_Manufactur0" name="name" value="" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <h4 class="title black">Informasi Pemberian Vaksin</h4>
+                    <h5 class="subtitle leftmargin"><i>Vaccine Administration Information</i></h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="titleQ">Tanggal</p>
+                        <p class="SubtitleQ">Date</p>
+                        <input type="date" class="form-control" id="V_Date0" name="name" value="" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Rute Pemberian</p>
+                        <p class="SubtitleQ">Route Of Administration</p>
+                        <select class="form-control" id="V_Route0">
+                            <option value="">Pilih / Choose</option>
+                            <option value="Oral">Oral / Oral</option>
+                            <option value="Intrakutan">Intrakutan / Intracutaneous</option>
+                            <option value="Subkutan">Subkutan / Subcutaneous</option>
+                            <option value="i.m">i.m / Intra muscular</option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Lokasi Penyuntikan</p>
+                        <p class="SubtitleQ">Injection Site</p>
+                        <input type="text" class="form-control" id="V_InjectionSite0" name="name" value="" />
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="titleQ">Jumlah Dosis</p>
+                        <p class="SubtitleQ">Total Dose</p>
+                        <input type="text" class="form-control" id="V_TotalDose0" name="name" value="" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Kondisi Obat</p>
+                        <p class="SubtitleQ">Drug Condition</p>
+                        <select class="form-control" id="V_DrugCondition0" onchange="OtherDrugCondition(0)">
+                            <option value="">Pilih / Choose</option>
+
+                            <option value="Intact">Baik / Intact</option>
+                            <option value="Deffect/damage">Cacat/Rusak / Deffect/damage</option>
+                            <option value="Others">Lainnya (jelaskan) / Other (explain)</option>
+
+                        </select>
+                        <br />
+                        <input type='text' style="display:none;" placeholder="Other Drug Condition" id="V_OtherDrugCondition0" class="form-control" name="name" value="" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Nama fasilitas kesehatan tempat imunisasi</p>
+                        <p class="SubtitleQ">Name of healthcare facility where immunization given</p>
+                        <input type="text" class="form-control" id="V_HealthcareFacility0" name="name" value="" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="titleQ">Waktu</p>
+                        <p class="SubtitleQ">Time</p>
+                        <input type="time" class="form-control" id="V_Time0" name="name" value="" />
+                    </div>
+                </div>
+
+
+            </div>
+            <br />
+            <br />
+            <div class="MoreVaccineItem">
+
+            </div>
+
+            <h4 class="title">
+                Manifestasi Kejadian Ikutan (keluhan, gejala klinis)
+            </h4>
+            <h5 class="subtitle">
+                <i>
+                    Manifestations of Adverse Events
+                    Symptoms Appear
+                </i>
+            </h5>
+
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <td colspan="2">
+                                    <center>
+                                        Keluhan & Gejala Klinis / Complaints and Clinical Symptoms
+                                    </center>
+                                </td>
+                                <td colspan="2">
+                                    <center>
+                                        Waktu Gejala Timbul / Onset of Symptom
+                                    </center>
+                                </td>
+                                <td colspan="2">
+                                    <center>
+                                        Lama gejala / Duration Of Symptoms
+                                    </center>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    Check Box
+                                </td>
+                                <td>
+                                    Keluhan & Gejala Klinis <b class="required">*</b>
+                                    / Complaints and Clinical Symptoms <b class="required">*</b>
+                                </td>
+                                <td>
+                                    Tanggal / Date
+                                </td>
+                                <td>
+                                    Jam / Time
+                                </td>
+
+
+
+                                <td>
+                                    Jam / Time
+                                </td>
+                                <td>
+                                    Hari / Day
+                                </td>
+
+
+
+                            </tr>
+                            @{
+                                int Numbercs = 0;
+                            }
+                            @foreach (var item in cs)
+                            {
+                                Numbercs = Numbercs + 1;
+                                string idSysm = "Symptoms" + Numbercs;
+                                string dateSysm = "DateSymptoms" + Numbercs;
+                                string timeSysm = "TimeSymptoms" + Numbercs;
+                                string durationSysm = "DurationSymptoms" + Numbercs;
+                                string daySysm = "DayStmptoms" + Numbercs;
+                                string SymptomsDetail = "SymptomsDetail" + Numbercs;
+                                <tr>
+                                    <td>
+                                        <center>
+                                            <input type="checkbox" onchange="SymptomsChecked(@Numbercs)" id="@idSysm" name="name" value="@item.Name" />
+                                        </center>
+                                    </td>
+                                    <td>
+                                        @*<input type="text" id="@SymptomsDetail" name="name" value="@item.Name" class="form-control" readonly />*@
+                                        <textarea class="form-control" id="@SymptomsDetail" readonly>@item.Name </textarea>
+                                    </td>
+                                    <td>
+                                        <input type="date" id="@dateSysm" name="name" value="" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="time" id="@timeSysm" name="name" value="" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="time" id="@durationSysm" name="name" value="" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" id="@daySysm" name="name" value="" class="form-control" />
+                                    </td>
+
+                                </tr>
+                            }
+
+
+                            @for (int i = 19; i < 21; i++)
+                            {
+                                string idSysm = "Symptoms" + i;
+                                string dateSysm = "DateSymptoms" + i;
+                                string timeSysm = "TimeSymptoms" + i;
+                                string durationSysm = "DurationSymptoms" + i;
+                                string daySysm = "DayStmptoms" + i;
+                                string SymptomsDetail = "SymptomsDetail" + i;
+                                <tr>
+                                    <td>
+                                        <center>
+                                            <input type="checkbox" onchange="SymptomsChecked(@i)" id="@idSysm" name="name" value="Others" />
+                                        </center>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="@SymptomsDetail" class="form-control" placeholder="Others" name="name" value="" />
+                                    </td>
+                                    <td>
+                                        <input type="date" id="@dateSysm" name="name" value="" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="time" id="@timeSysm" name="name" value="" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="time" id="@durationSysm" name="name" value="" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" id="@daySysm" name="name" value="" class="form-control" />
+                                    </td>
+
+                                </tr>
+                            }
+
+
+
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <p class="titleQ">Perawatan / Tindakan </p>
+                    <p class="SubtitleQ">Treatment / Action </p>
+                    <div class="checkbox">
+                        <label><input id="TreatmentAction0" onchange="TreatmentChecked()" type="checkbox" value="Tindakan Darurat / Emergency measures">Tindakan Darurat / Emergency Action</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" onchange="TreatmentChecked()" id="TreatmentAction1" value="Rawat Jalan">Rawat Jalan / Outpatient   - Tanggal / Date &nbsp;<input type="date" id="DateTreatmentAction1" name="name" value="" /></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" onchange="TreatmentChecked()" id="TreatmentAction2" value="Rawat Inap">Rawat Inap / Inpatient - Tanggal / Date <input type="date" id="DateTreatmentAction2" name="name" value="" /></label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox" onchange="TreatmentChecked()" id="TreatmentAction3" value="Di Rujuk">Di Rujuk Ke / Referred to<input id="HospitalTreatmentAction3" type="text" name="name" value="" /> Tanggal / Date <input id="DateTreatmentAction3" type="date" /> </label>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <p class="titleQ">Kondisi Akhir Pasien </p>
+                    <p class="SubtitleQ">Patient's Current Condition </p>
+                    <div class="checkbox">
+                        <label><input name="FinalConditionPatient" id="FinalConditionPatient0" type="radio" value="Sembuh">  Sembuh / Recovered</label>
+                    </div>
+                    <div class="checkbox">
+                        <label><input name="FinalConditionPatient" id="FinalConditionPatient1" type="radio" value="Meninggal">  Meninggal / Death - Tanggal /  Date &nbsp;<input id="DateFinalConditionPatient1" type="date" name="name" value="" /></label>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Apakah ada anak/pasien lain yang diimunisasi pada saat yang sama mengalami gejala serupa? </p>
+                    <p class="SubtitleQ">Is there any other child / patient who received immunization at the same time experience similar symptom? </p>
+                    <select class="form-control" id="SymptomsImmunized">
+                        <option value="">Pilih / Choose</option>
+                        <option value="Ya">Ya / Yes</option>
+                        <option value="Tidak">Tidak / No</option>
+                        <option value="Tidak Tahu">Tidak Tahu / Unknown</option>
+                    </select>
+                    <p class="titleQ">Pengobatan KIPI </p>
+                    <p class="SubtitleQ">Treatment for AEFI</p>
+                    <textarea class="form-control" id="TreatmentKIPI"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Apakah ada anak/pasien lain yang tidak diimunisasi pada saat yang sama mengalami gejala serupa ? </p>
+                    <p class="SubtitleQ">Is there any other child / patient who were not received immunization at the same time experience similar symptom? </p>
+                    <select class="form-control" id="SymptomsNotImmunized">
+                        <option value="">Pilih / Choose</option>
+                        <option value="Ya">Ya / Yes</option>
+                        <option value="Tidak">Tidak / No</option>
+                        <option value="Tidak Tahu">Tidak Tahu / Unknown</option>
+                    </select>
+                    <p class="titleQ">Informasi kesehatan lainnya (alergi, kelainan kongenital, dalam terapi obat-obatan tertentu) </p>
+                    <p class="SubtitleQ">Other relevant medical information (allergy, congenital disorder, under certain ongoing treatment)</p>
+                    <textarea class="form-control" id="OtherHealthInformation"></textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Apakah Anda bersedia dihubungi untuk membantu Anda melengkapi data di formulir ini (bila diperlukan)? <b class="required">*</b></p>
+                    <p class="SubtitleQ">Are you willing to be contacted to help you complete this form (if necessary)? <b class="required">*</b></p>
+                    <select class="form-control" id="WillingContacted" required>
+                        <option value="">Pilih / Choose</option>
+                        <option value="Ya">Ya / Yes</option>
+                        <option value="Tidak">Tidak / No</option>
+                    </select>
+                </div>
+
+
+            </div>
+            <input type="hidden" id="MultiFileName" name="name" value="" />
+
+            @*captcha site key dev 6LfqeuMfAAAAADZPirJGVS-yI02w9Dn-typzn10i*@
+            @*captcha site key prod 6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38*@
+            <div id="CaptchaGoogleKIPI" style="height: 100px; position: relative; top: 134px;" class="g-recaptcha" data-sitekey="6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38"></div>
+            <button class="btn btn-success form-control btn-lg submitformkipi" style="height: 50px; margin-top: 150px;">SUBMIT FORM</button>
+        </form>
+
+
+        <br />
+        <br />
+        <div class="row" style="margin-top:-450px;padding-top:40px;">
+            <form action="/" method="post" class="UploadFileSupportKIPI" id="UploadFileSupport" enctype="multipart/form-data">
+                <div class="col-md-6">
+
+                    <p class="titleQ">Upload File Pendukung (Anda Bisa Mengupload Lebih dari Satu File )</p>
+
+                    <p style="margin-top:-11px;" class="SubtitleQ">Upload Supporting Files (You Can Uploaded More Than 1 File)</p>
+                    <input type="file" onclick="ShowUploadFiles()" id="files" name="Image" multiple class="form-control" required>
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <button style="margin-top: 45px;" class="btn btn-primary UploadImage" type="submit">
+                        <i class="fa fa-upload"></i>
+
+                        Upload Files
+                    </button>
+                    <label class="loadingImage" style="margin-top:55px;display:none;">
+                        <i class="fa fa-spinner fa-spin fa-fw"></i> Loading ...
+                    </label>
+                    <label style="color: forestgreen; margin-top: 55px; display: none;" class="UploadedImage">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        Uploaded
+                    </label>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+

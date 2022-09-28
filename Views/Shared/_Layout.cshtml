@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+
+@{
+    
+    string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Etana Pharmacovigilance</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="icon" type="image/x-icon" href="~/Asset/favicon.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    @*<script src="https://www.google.com/recaptcha/api.js?render=6Ld_nK4fAAAAAEj-0IODO0qh9WhwnShZp4vz7WgR"></script>*@
+    @*<script src="https://www.google.com/recaptcha/api.js"></script>*@
+    <link href="~/Content/Custom.css" rel="stylesheet" />
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<style>
+    body {
+        font-family: 'FontRegular';
+    }
+    .icon-bar{
+        background-color:black !important;
+    }
+    .swal2-popup {
+        font-size: 1.6rem !important;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: #bdc3c7;
+        /*font-weight: bold;*/
+    }
+    .navbar-inverse .navbar-nav > li > a:hover{
+        color:black !important;
+    }
+    .navbar-inverse .navbar-nav > li > a:focus {
+        color: black !important;
+    }
+    .listmenu > li > a{
+        color:black!important;
+        font-weight:bolder;
+    }
+    .bolderFont {
+        font-family: 'FontBold' !important;
+    }
+    .menurightbro > li > a {
+        color: black !important;
+
+    }
+}
+</style>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:white !important;color:black !important;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="@baseUrl" class="navbar-brand">
+                    <img src="~/Asset/logoPV.png" alt="Alternate Text" style="width:209px;margin-top:-8px;" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul  class="nav navbar-nav listmenu" style="margin-left:20px;font-size:14px;">
+                    <li><a href="@baseUrl">Home</a></li>
+                    <li> <a href="@baseUrl/Complaint">Pharmacovigilance & Product Complaint</a> </li>
+                    <li><a href="@baseUrl/ContactUs">Contact Us</a></li>
+                </ul>
+                <ul class="nav navbar-nav menurightbro" style="float:right;">
+                    <li>
+                        <a href="@baseUrl/SecureAdmin">
+                            <img style="width:30px" src="~/Asset/ICON_ADMIN.png" alt="Alternate Text" />  &nbsp;Admin
+                        </a>                    
+    @*<button onclick="goToAdmin()" style="margin-top:5px;" class="btn btn-default"><i class="fa fa-user"></i> &nbsp;Admin</button>*@
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content" style="padding:0px!important;">
+        <div>
+            @RenderBody()
+        </div>
+
+
+        @*<hr />*@
+        <div class="footerweb">
+            <p style="text-align: center; font-family: 'FontBold'; color: dimgrey; ">&copy; @DateTime.Now.Year - <a style="color:dimgrey;" href="https://www.id.etanabiotech.com/">PT. Etana Biotechnologies Indonesia</a> </p>
+        </div>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/PV/SweetAlert.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+    <script>
+
+    function goToAdmin() {
+        window.location = "@baseUrl/SecureAdmin";
+        }
+
+        function alertError(Msg, Ref = "#") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: Msg
+            }).then((result) => window.location.href = Ref)
+        }
+
+        function alertSuccess(Msg, Ref = "#") {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success...',
+                text: Msg
+            }).then((result) => window.location.href = Ref)
+        }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+
+
+        function loading() {
+            var timerInterval;
+            Swal.fire({
+                title: 'Loading .....',
+                html: ' Jangan Menutup Tab selama proses data berlangsung !.',
+                //timer: 5000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+
+                    timerInterval = setInterval(() => {
+                        const content = Swal.getContent()
+                        if (content) {
+                            const b = content.querySelector('b')
+                            if (b) {
+                                b.textContent = Swal.getTimerLeft()
+                            }
+
+                        }
+                    }, 100)
+                },
+                onClose: () => {
+                    clearInterval(timerInterval)
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
+            })
+        }
+
+
+        var baseUrl = '@baseUrl';
+
+
+    </script>
+
+    <script src="~/Scripts/PV/@ViewBag.javascript"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $(".cobatable").DataTable()
+        })
+    </script>
+
+</body>
+</html>

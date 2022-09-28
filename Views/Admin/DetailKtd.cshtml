@@ -1,0 +1,489 @@
+﻿@using PharmacovigilanceEtana.Models
+@{
+    List<DetailInteralProduct> di = ViewBag.DetailInteralProduct;
+    List<DetailExteralProduct> dex = ViewBag.DetailExteralProduct;
+    ViewBag.Title = "Detail Ktd";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+
+
+
+<div class="jumbotron" style="background-image: url('../../Asset/bgslider.png'); background-position: right;">
+    <div class="container" style="padding-top:40px;">
+        <button class="btn btn-default" id="printPageButton" style="margin-bottom:20px;" onClick="window.print();"> <i class="fa fa-print"></i>  Print / Save </button>
+        <table class="table-bordered" style="width:100%;">
+            <tr>
+                <td rowspan="2" style="padding:20px;">
+                    <img style="width:100px;" src="~/Asset/Etana_logo.png" class="img-responsive" alt="Alternate Text" />
+                    <br />
+                    <h5 class="headertitle">PT ETANA BIOTECHNOLOGIES INDONESIA  </h5>
+                </td>
+
+                <td rowspan="2" style="padding:20px;">
+                    <center>
+                        <h4 class="headertitle">Pelaporan Kejadian Tidak Diinginkan Pelanggan</h4>
+                    </center>
+                    <center>
+                        <h4 class="headertitle"> <I>Customer Adverse Event Reporting</I></h4>
+                    </center>
+                    <center>
+                        <h4 class="headertitle" style="font-size:15px;"> <I id="LetterNo"></I></h4>
+                    </center>
+                </td>
+                <!--<td style="padding:20px;">
+            <h4 class="headertitle">Document No :</h4>
+            <h4 class="headertitle">-->
+                @*@NoDocument.Replace("_", "/")*@
+                <!--</h4>
+            </td>
+            <td style="padding:20px;">
+                <h4 class="headertitle">Effective Date :</h4>
+                <h4 class="headertitle">-->
+                @*@EffectiveDate.Replace("_", "/")*@
+                <!--</h4>
+            </td>-->
+            </tr>
+
+
+
+
+        </table>
+
+
+
+        <hr />
+        <br />
+        <h4 class="title">Informasi Pelapor</h4>
+        <h5 class="subtitle"><i>Reporter Information</i></h5>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p class="titleQ">Nama <b class="required">*</b> </p>
+                <p class="SubtitleQ">Name <b class="required">*</b></p>
+                <input type="text" class="form-control" id="Name" name="name" value="" required readonly />
+                <p class="titleQ">Alamat</p>
+                <p class="SubtitleQ">Address</p>
+                <textarea class="form-control" id="Address" name="name" value="" readonly>
+                </textarea>
+                <p class="titleQ">Kota</p>
+                <p class="SubtitleQ">City</p>
+                <input type="text" class="form-control" id="City" name="City" value="" required readonly />
+
+            </div>
+            <div class="col-md-6">
+                <p class="titleQ">No Telepon / Email <b class="required">*</b></p>
+                <p class="SubtitleQ">Phone Number / Email <b class="required">*</b></p>
+                <input type="text" class="form-control" name="name" value="" id="PhoneEmail" required readonly />
+                <p class="titleQ">Kode Pos</p>
+                <p class="SubtitleQ">Postal Code</p>
+                <input type="text" class="form-control" name="name" value="" id="PostalCode" readonly />
+
+            </div>
+        </div>
+
+        <h4 class="title">Informasi Pasien</h4>
+        <h5 class="subtitle"><i>Patient Information</i></h5>
+        <h4 class="title black">Informasi Pribadi</h4>
+        <h5 class="subtitle leftmargin"><i>Personal Information</i></h5>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="titleQ">Nama / Inisial <b class="required">*</b> </p>
+                <p class="SubtitleQ">Name / Initial <b class="required">*</b></p>
+                <input type="text" class="form-control" id="InitialName" name="name" value="" required readonly />
+                <p class="titleQ">Umur <b class="required">*</b></p>
+                <p class="SubtitleQ">Age <b class="required">*</b></p>
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="titleQ">Tahun / Years <b class="required">*</b></p>
+
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" name="name" id="YearAge" value="" class="form-control" required readonly />
+                    </div>
+                    <div class="col-md-3">
+                        <p class="titleQ">Bulan / Months <b class="required">*</b></p>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" name="name" id="MonthAge" value="" class="form-control" required readonly />
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <p class="titleQ">Tinggi Badan / Height (cm)</p>
+
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" id="HeightBody" name="name" value="" class="form-control" readonly />
+                    </div>
+                    <div class="col-md-3">
+                        <p class="titleQ">Berat Badan / Weight (kg)</p>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="number" name="name" id="WeightBody" value="" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p class="titleQ">Jenis Kelamin <b class="required">*</b> </p>
+                <p class="SubtitleQ">Sex <b class="required">*</b></p>
+                <input type="text" name="name" id="Sex" value="" class="form-control" readonly />
+
+                <p class="titleQ">Profesi</p>
+                <p class="SubtitleQ">Profession</p>
+                <input type="text" name="name" id="Profession" value="" class="form-control" readonly />
+            </div>
+        </div>
+        <br />
+        <h4 class="title black">Informasi Kesehatan</h4>
+        <h5 class="subtitle leftmargin"><i>Health Information</i></h5>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="titleQ">
+                    Deskripsikan kejadian tidak diinginkan  <b class="required">*</b>
+                    (juga memberikan rincian yang tersedia dari tes laboratorium atau pengobatan untuk kejadian tidak diinginkan, melampirkan formulir/lembar tambahan jika perlu)
+                </p>
+                <p class="SubtitleQ">
+                    Describe the adverse event <b class="required">*</b>
+                    (also provide available details of lab tests or treatment taken for the adverse event, attach additional forms/sheet if necessary)
+                </p>
+                <textarea id="DescribeAdverseEvent" class="form-control" required readonly></textarea>
+
+            </div>
+            <div class="col-md-12">
+                <p class="titleQ">
+                    Informasi lain yang relevan
+                    (penyakit lain yang menyertai, diagnosis, alergi, kebiasaan merokok, kehamilan, menyusui, penggunaan alcohol, dll)
+                </p>
+                <p class="SubtitleQ">
+                    Other relevant information
+                    (other concomitant disease, diagnosis, allergy, smoking, pregnancy, breast feeding, alcohol use, etc.)
+
+                </p>
+                <textarea id="OtherReleventInformation" class="form-control" readonly></textarea>
+            </div>
+        </div>
+
+        <h4 class="title ">Produk Kesehatan yang Mungkin berkaitan dengan kejadian tidak diinginkan </h4>
+        <h5 class="subtitle "><i>Health Product which might be related to the adverse event</i></h5>
+        <p class="titleQ">Produk kesehatan termasuk obat resep atau tanpa resep, biologi (termasuk fraksi produk-produk darah dan vaksin), produk kesehatan alami, dan radiofarmasi</p>
+        <p class="SubtitleQ">Health products include prescription and non-prescription medications, biologics (including fractionated blood products and vaccines), natural health products and radiopharmaceuticals.</p>
+
+        <br /><br />
+        @{
+
+            int number = 0;
+        }
+        @foreach (var res in di)
+
+        {
+            <br />
+            number = number + 1;
+            <div class="BoxInternalProduct0">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5"> <hr /></div>
+                    <div class="col-md-2 col-sm-2 col-xs-2"> <h3 style="text-align:center;margin-top:0px;">Product @number</h3> </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5"> <hr /></div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="titleQ">Nama Produk</p>
+                        <p class="SubtitleQ">Product Of Name <b class="required">*</b> </p>
+                        <input type="text" class="form-control" name="name" value="@res.ProductName" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Nomor Bets</p>
+                        <p class="SubtitleQ">Batch Number</p>
+                        <input type="text" class="form-control" id="KTDIPBatchNo0" name="name" value="@res.BatchNo" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Produsen</p>
+                        <p class="SubtitleQ">Manufactur </p>
+                        <input type="text" class="form-control" id="KTDIPManufactur0" name="name" value="@res.Manufactur" disabled />
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="titleQ">Kategori Produk <b class="required">*</b> </p>
+                        <p class="SubtitleQ">Product Category <b class="required">*</b> </p>
+                        <input type="text" class="form-control" name="name" value="@res.CategoryName" disabled />
+                    </div>
+                    @{
+                        string exdate = res.ExpDate == "01/01/1900 00:00:00" ? "" : res.ExpDate;
+                    }
+                    <div class="col-md-4">
+                        <p class="titleQ">Tanggal Kadaluarsa</p>
+                        <p class="SubtitleQ">Expire Date</p>
+                        <input type="text" id="KTDIPExpDate0" class="form-control" name="name" value="@exdate" disabled />
+                    </div>
+                    @{
+                        string strdate = res.StartDate == "01/01/1900 00:00:00" ? "" : res.StartDate;
+                    }
+                    <div class="col-md-4">
+                        <p class="titleQ">Tanggal Mulai Di Gunakan </p>
+                        <p class="SubtitleQ">Start Date</p>
+                        <input disabled type="text" id="KTDIPStartDate0" class="form-control" name="name" value="@strdate" />
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="titleQ">Dosis misal. 3 X 1 tablet (500 mg) perhari) </p>
+                        <p class="SubtitleQ">Dosage (e.g. 3 X 1 tablet (500 mg) a day) </p>
+                        <input type="text" class="form-control" name="name" id="KTDIPDossage0" value="@res.Dossage" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Kondisi Obat</p>
+                        <p class="SubtitleQ">Drug Condition</p>
+                        @{
+                            var drCondition = "";
+                            if (res.DrugCondition == "Lainnya")
+                            {
+                                drCondition = res.OtherDrugCondition;
+                            }
+                            else
+                            {
+                                drCondition = res.DrugCondition;
+                            }
+                        }
+                        <input type="text" class="form-control" name="name" id="KTDIPDossage0" value="@drCondition" disabled />
+                        <br />
+                        <input style="display:none;" type="text" class="form-control" name="name" id="KTDIPOtherDrugCondition0" value="@res.TherapyDuration" disabled />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Durasi terapi</p>
+                        <p class="SubtitleQ">Therapy duration</p>
+                        <input type="text" class="form-control" name="name" id="KTDIPTherapyDuration0" value="@res.TherapyDuration" disabled>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="titleQ">Apa tujuan pemberian produk?</p>
+                        <p class="SubtitleQ">What was the product administered for?</p>
+                        <textarea id="KTDIPProductAdministered0" class="form-control" disabled>@res.ProductAdministered</textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="titleQ">Bagaimana rute pemberian produk( melalui oral, injeksi, topical, dll)?</p>
+                        <p class="SubtitleQ">How was the product administered (by oral, by injection, etc)?</p>
+                        <textarea class="form-control" id="KTDIPRouteProductAdministered0" disabled>@res.RouteProductAdministered</textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="titleQ">Apakah produk ini masih digunakan?</p>
+                        <p class="SubtitleQ">Is the product still being taken? </p>
+                        <input type="text" class="form-control" name="name" value="@res.ProductTaken" disabled />
+                    </div>
+                    <div class="col-md-6">
+                        <p class="titleQ">Bila produk digunakan Kembali, apakah kejadian tidak diinginkan terjadi kembali</p>
+                        <p class="SubtitleQ">If the product was restarted, did the side effect return?</p>
+                        <input type="text" class="form-control" name="name" value="@res.ProductSideEffectReturn" disabled />
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="titleQ">Setelah produk dihentikan penggunaanya, apakah kejadian tidak diinginkan masih berlangsung?</p>
+                        <p class="SubtitleQ">After the usage was stopped, is the adverse event still happening? </p>
+                        <input type="text" class="form-control" name="name" value="@res.ProductStopStillHappening" disabled />
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+        }
+
+        <br />
+        <div class="MoreItemInteralProduct"></div>
+
+        <h4 class="title ">Produk-Produk Kesehatan Yang Digunakan Pada Waktu Bersamaan/ 3 Bulan Sebelumnya</h4>
+        <h5 class="subtitle "><i>Health Products Used at The Same Time / 3 Month Before</i></h5>
+
+
+        <br />
+        <div class="row">
+            <div class="table-responsive">
+                @*dex*@
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nama Produk</th>
+                            <th>Dosis</th>
+                            <th>Frekuensi</th>
+                            <th>Rute</th>
+                            <th>Tanggal Mulai</th>
+                            <th>Durasi Terapi</th>
+                            <th>Indikasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in dex)
+                        {
+                            <tr>
+                                <td>@item.ProductName</td>
+                                <td>@item.Dossage</td>
+                                <td>@item.Frequency</td>
+                                <td>@item.Route</td>
+                                <td>@item.StartDate</td>
+                                <td>@item.TherapyDuration</td>
+                                <td>@item.Indication</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <br />
+        <div class="MoreItemInteralProductExternal">
+
+        </div>
+
+        <h4 class="title ">Kejadian Tidak Diinginkan</h4>
+        <h5 class="subtitle "><i>Unwanted Events</i></h5>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p class="titleQ">Kapan kejadian tidak diinginkan mulai terjadi? <b class="required">*</b> </p>
+                <p class="SubtitleQ">When did the side effect start? <b class="required">*</b> </p>
+                <input id="SideEffectStart" type="text" class="form-control" name="name" value="" required readonly />
+            </div>
+            <div class="col-md-6">
+                <p class="titleQ">Kapan kejadian tidak diinginkan berhenti? <b class="required">*</b></p>
+                <p class="SubtitleQ">When did it stop? <b class="required">*</b> </p>
+                <input type="text" id="SideEffectStop" class="form-control" name="name" value="" required readonly />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="titleQ">Seberapa parah kejadian tidak diinginkannya? (Pilih kotak yang sesuai) <b class="required">*</b></p>
+                <p class="SubtitleQ">How bad was the side effect? (Select all the boxes that apply) <b class="required">*</b></p>
+                <div class="SideEffectDetail">
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+        @*<p class="titleQ">Deskripsikan kejadian tidak diinginkan (Juga memberikan rincian yang tersedia dari tes laboratorium atau pengobatan untuk kejadian tidak diinginkan, melampirkan formulir / lembar tambahan jika perlu)</p>
+        <p class="SubtitleQ">Describe the adverse event (also provide available details of lab tests or treatment taken for the adverse event, attach additional forms/sheet if necessary)</p>
+        <textarea class="form-control"></textarea>*@
+
+        <div class="row">
+            <div class="col-md-6">
+                <p class="titleQ">Apa yang dirasakan pasien sekarang? <b class="required">*</b></p>
+                <p class="SubtitleQ">How is the person feeling now <b class="required">*</b></p>
+                <input type="text" id="FeelingPatient" class="form-control" name="name" value="" required readonly />
+
+                <p class="titleQ">Laporan Diterima Oleh ? <b class="required">*</b></p>
+                <p class="SubtitleQ">Received By <b class="required">*</b></p>
+                <input type="text" id="ReceivedBy" class="form-control" name="name" value="" required readonly />
+
+            </div>
+            <div class="col-md-6">
+                <p class="titleQ">Sudahkah melaporkan kejadian tidak diinginkan ini kepada BPOM?</p>
+                <p class="SubtitleQ">Have you reported this adverse event to BPOM? </p>
+                <input type="text" id="ReportBPOM" class="form-control" name="name" value="" required readonly />
+
+                <p class="titleQ">Apakah Anda bersedia dihubungi untuk membantu Anda melengkapi data di formulir ini (bila diperlukan) ?</p>
+                <p class="SubtitleQ">Are you willing to be contacted to help you complete this form (if necessary) ? </p>
+                <input type="text" id="WillingContacted" class="form-control" name="name" value="" required readonly />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p class="titleQ">File Pendukung</p>
+                <p class="SubtitleQ">Supporting Files</p>
+
+                <div class="SupportingFiles">
+                   
+                </div>
+            </div>
+           
+
+        </div>
+
+
+
+
+
+            <br /><br />
+
+        </div>
+    </div>
+
+
+
+<script>
+    var IdFormKtd = '@Request["Idx"].ToString()';
+</script>

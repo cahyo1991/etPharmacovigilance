@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home";
+    string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/');
+}
+
+<style>
+    .footerweb > p {
+        color:dimgrey;
+        font-weight:bold;
+        margin-bottom:0px;
+
+    }
+        .footerweb > p > a {
+            color: dimgrey;
+        }
+    .footerweb{
+        display:none;
+    }
+</style>
+
+<div class="jumbotron boxcontent" style="position: relative; background-color: white; background-image: url('../../Asset/SHAPE.png'); background-position: right 123px; background-repeat: no-repeat; padding-bottom: 0px; margin-bottom: 0px; background-size: cover;">
+    <div class="row">
+        <div class="col-md-4" style="padding-top: 40px; padding-bottom: 80px;padding-right:0px;">
+            <img src="~/Asset/Etana_logo.png" alt="Alternate Text" style="width:100px;margin-top:109px;" />
+            <h3 style="margin-top:25px;font-size:16px;">Selamat datang di website Keluhan Produk </h3>
+            <h3 style=" margin-top: -4px; font-size: 22px;color:black;"> <b style="font-weight:900;">PT. Etana Biotechnologies Indonesia </b> </h3>
+
+
+            <a href="@baseUrl/Complaint" class="btn btn-primary" style="border: none; font-size: 13px; margin-top: 30px; background: rgb(27,174,226); background: linear-gradient(90deg, rgba(27,174,226,1) 0%, rgba(27,174,226,1) 35%, rgba(134,220,238,1) 100%); padding: 10px; border: 1px solid; padding: 10px; box-shadow: 5px 5px rgba(0, 0, 0, 0.05); "> <b>Keluhan Produk </b> </a>
+
+        </div>
+        <div class="col-md-8" style="padding-top: 50px;">
+            <img src="~/Asset/bgfront.png" alt="Alternate Text" class="img-responsive" />
+        </div>
+    </div>
+
+
+
+        <p class="footerhome" style="text-align: center; color: dimgrey; font-size: 14px; position: absolute; top: 95%; left: 40%; "> <b>&copy; @DateTime.Now.Year - <a style="color:dimgrey;" href="https://www.id.etanabiotech.com/">PT. Etana Biotechnologies Indonesia</a> </b> </p>
+    
+</div>
+
+
+
+
+
+

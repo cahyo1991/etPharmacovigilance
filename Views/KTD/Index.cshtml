@@ -1,0 +1,563 @@
+﻿
+@{
+    ViewBag.Title = "Form KTD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+
+
+
+<div class="jumbotron" style="background-color: white; background-image: url('../../Asset/SHAPE.png'); background-position: right 2568px; background-repeat: no-repeat; padding-bottom:30px;margin-bottom:0px;">
+    <div class="container" style="padding-top:40px;">
+        <form action="/" method="post" id="InsertFormKTD" enctype="multipart/form-data">
+            <h3 style="font-size:18px;">Form Pelaporan Kejadian Tidak Diinginkan Pelanggan</h3>
+            <h4 style="font-size:16px;"> <i>Customer Adverse Event Reporting</i></h4>
+
+            <hr />
+            <br />
+            <h4 class="title">Informasi Pelapor</h4>
+            <h5 class="subtitle"><i>Reporter Information</i></h5>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Nama <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Name <b class="required">*</b></p>
+                    <input type="text" class="form-control" id="Name" name="name" value="" required />
+                    <p class="titleQ">Alamat</p>
+                    <p class="SubtitleQ">Address</p>
+                    <textarea class="form-control" id="Address" name="name" value="">
+                </textarea>
+                    <p class="titleQ">Kota</p>
+                    <p class="SubtitleQ">City</p>
+                    <select class="form-control" id="IdProvince">
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">No Telepon / Email <b class="required">*</b></p>
+                    <p class="SubtitleQ">Phone Number / Email <b class="required">*</b></p>
+                    <input type="text" class="form-control" name="name" value="" id="PhoneEmail" required />
+                    <p class="titleQ">Kode Pos</p>
+                    <p class="SubtitleQ">Postal Code</p>
+                    <input type="text" class="form-control" name="name" value="" id="PostalCode" />
+
+                </div>
+            </div>
+
+            <h4 class="title">Informasi Pasien</h4>
+            <h5 class="subtitle"><i>Patient Information</i></h5>
+            <h4 class="title black">Informasi Pribadi</h4>
+            <h5 class="subtitle leftmargin"><i>Personal Information</i></h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Nama / Inisial <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Name / Initial <b class="required">*</b></p>
+                    <input type="text" class="form-control" id="InitialName" name="name" value="" required />
+                    <p class="titleQ">Umur <b class="required">*</b></p>
+                    <p class="SubtitleQ">Age <b class="required">*</b></p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="titleQ">Tahun / Years <b class="required">*</b></p>
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="name" id="YearAge" value="" class="form-control" required />
+                        </div>
+                        <div class="col-md-3">
+                            <p class="titleQ">Bulan / Months <b class="required">*</b></p>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="name" id="MonthAge" value="" class="form-control" required />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p class="titleQ">Tinggi Badan / Height (cm)</p>
+
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" id="HeightBody" name="name" value="" class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <p class="titleQ">Berat Badan / Weight (kg)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <input type="number" name="name" id="WeightBody" value="" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Jenis Kelamin <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Sex <b class="required">*</b></p>
+                    <select class="form-control" id="Sex" required>
+                        <option value="">Pilih / Choose</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <p class="titleQ">Profesi</p>
+                    <p class="SubtitleQ">Profession</p>
+                    <input type="text" name="name" id="Profession" value="" class="form-control" />
+                </div>
+            </div>
+            <br />
+            <h4 class="title black">Informasi Kesehatan</h4>
+            <h5 class="subtitle leftmargin"><i>Health Information</i></h5>
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">
+                        Deskripsikan kejadian tidak diinginkan  <b class="required">*</b>
+                        (juga memberikan rincian yang tersedia dari tes laboratorium atau pengobatan untuk kejadian tidak diinginkan, melampirkan formulir/lembar tambahan jika perlu)
+                    </p>
+                    <p class="SubtitleQ">
+                        Describe the adverse event <b class="required">*</b>
+                        (also provide available details of lab tests or treatment taken for the adverse event, attach additional forms/sheet if necessary)
+                    </p>
+                    <textarea id="DescribeAdverseEvent" class="form-control" required></textarea>
+
+                </div>
+                <div class="col-md-12">
+                    <p class="titleQ">
+                        Informasi lain yang relevan
+                        (penyakit lain yang menyertai, diagnosis, alergi, kebiasaan merokok, kehamilan, menyusui, penggunaan alcohol, dll)
+                    </p>
+                    <p class="SubtitleQ">
+                        Other relevant information
+                        (other concomitant disease, diagnosis, allergy, smoking, pregnancy, breast feeding, alcohol use, etc.)
+
+                    </p>
+                    <textarea id="OtherReleventInformation" class="form-control"></textarea>
+                </div>
+            </div>
+
+            <h4 class="title ">Produk Kesehatan yang Mungkin berkaitan dengan kejadian tidak diinginkan </h4>
+            <h5 class="subtitle "><i>Health Product which might be related to the adverse event</i></h5>
+            <p class="titleQ">Produk kesehatan termasuk obat resep atau tanpa resep, biologi (termasuk fraksi produk-produk darah dan vaksin), produk kesehatan alami, dan radiofarmasi</p>
+            <p class="SubtitleQ">Health products include prescription and non-prescription medications, biologics (including fractionated blood products and vaccines), natural health products and radiopharmaceuticals.</p>
+            <br />
+            <a href="javascript:" class="btn btn-success MoreItemProduct">+ Masukkan Produk Lainnya / Add More Item</a>
+            <br /><br />
+            <div class="BoxInternalProduct0">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-xs-5"> <hr /></div>
+                    <div class="col-md-2 col-sm-2 col-xs-2"> <h3 style="text-align:center;margin-top:0px;">Product 1</h3> </div>
+                    <div class="col-md-5 col-sm-5 col-xs-5"> <hr /></div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="titleQ">Nama Produk</p>
+                        <p class="SubtitleQ">Name Of Product<b class="required">*</b> </p>
+                        <select class="ListProduct form-control" id="KTDIPIdProduct0" required>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Nomor Bets</p>
+                        <p class="SubtitleQ">Batch Number</p>
+                        <input type="text" class="form-control" id="KTDIPBatchNo0" name="name" value="" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Produsen</p>
+                        <p class="SubtitleQ">Manufacturer </p>
+                        <input type="text" class="form-control" id="KTDIPManufactur0" name="name" value="" />
+                    </div>
+
+
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="titleQ">Kategori Produk  </p>
+                        <p class="SubtitleQ">Product Category </p>
+                        <select class="form-control" id="KTDIPIdProductCategory0">
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Tanggal Kedaluwarsa</p>
+                        <p class="SubtitleQ">Expire Date</p>
+                        <input type="date" id="KTDIPExpDate0" class="form-control" name="name" value="" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Tanggal Mulai Di Gunakan </p>
+                        <p class="SubtitleQ">Start Date Of Used</p>
+                        <input type="date" id="KTDIPStartDate0" class="form-control" name="name" value="" />
+                    </div>
+                </div>
+
+
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <p class="titleQ">Dosis misal. 3 X 1 tablet (500 mg) perhari) </p>
+                        <p class="SubtitleQ">Dosage (e.g. 3 X 1 tablet (500 mg) a day) </p>
+                        <input type="text" class="form-control" name="name" id="KTDIPDossage0" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Kondisi Obat</p>
+                        <p class="SubtitleQ">Drug Condition</p>
+                        <select onchange="OtherDrugCondition(0)" class="form-control" id="KTDIPDrugCondition0">
+                            <option value="">Pilih / Choose</option>
+                            <option value="Baik">Baik / Intact</option>
+                            <option value="Cacat">Cacat / Rusak - Defect / Damage</option>
+                            <option value="Lainnya">Lainnya (Jelaskan) / Others (Explain)</option>
+                        </select>
+                        <br />
+                        <input style="display:none;" type="text" class="form-control" name="name" id="KTDIPOtherDrugCondition0" placeholder="Input Others Drug Condition" />
+                    </div>
+                    <div class="col-md-4">
+                        <p class="titleQ">Durasi terapi</p>
+                        <p class="SubtitleQ">Therapy duration</p>
+                        <input type="text" class="form-control" name="name" id="KTDIPTherapyDuration0">
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="titleQ">Apa tujuan pemberian produk?</p>
+                        <p class="SubtitleQ">What was the product administered for?</p>
+                        <textarea id="KTDIPProductAdministered0" class="form-control"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="titleQ">Bagaimana rute pemberian produk( melalui oral, injeksi, topical, dll)?</p>
+                        <p class="SubtitleQ">How was the product administered (by oral, by injection, etc)?</p>
+                        <textarea class="form-control" id="KTDIPRouteProductAdministered0"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="titleQ">Apakah produk ini masih digunakan?</p>
+                        <p class="SubtitleQ">Is the product still being taken? </p>
+                        <select class="form-control" id="KTDIPProductTaken0">
+                            <option value="">Pilih / Choose</option>
+                            <option value="Yes">Ya / Yes</option>
+                            <option value="No">Tidak / No</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <p class="titleQ">Bila produk digunakan Kembali, apakah kejadian tidak diinginkan terjadi kembali</p>
+                        <p class="SubtitleQ">If the product was restarted, did the side effect return?</p>
+                        <select class="form-control" id="KTDIPProductSideEffectReturn0">
+                            <option value="">Pilih / Choose</option>
+                            <option value="Yes">Ya / Yes</option>
+                            <option value="No">Tidak / No</option>
+                            <option value="DoesNotApply">Tidak Sesuai / Does Not Apply</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+                        <p class="titleQ">Setelah produk dihentikan penggunaanya, apakah kejadian tidak diinginkan masih berlangsung?</p>
+                        <p class="SubtitleQ">After the usage was stopped, is the adverse event still happening? </p>
+                        <select class="form-control" id="KTDIPProductStopStillHappening0">
+                            <option value="">Pilih / Choose</option>
+                            <option value="Yes">Ya / Yes</option>
+                            <option value="No">Tidak / No</option>
+                            <option value="DoesNotApply">Tidak Sesuai / Does Not Apply</option>
+                        </select>
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+            <br />
+            <div class="MoreItemInteralProduct"></div>
+
+            <h4 class="title ">Produk-Produk Kesehatan Yang Digunakan Pada Waktu Bersamaan/ 3 Bulan Sebelumnya</h4>
+            <h5 class="subtitle "><i>Concomitant Medicinal Product(s)/3 Month Before</i></h5>
+
+            <a href="javascript:" class="btn btn-success MoreItemProductExternal">+ Masukkan Produk Lainnya / Add More Item</a>
+            <br /><br /><br />
+            <div class="row">
+                <div class="col-md-2">
+                    <p class="titleQ">Nama Produk</p>
+                    <p class="SubtitleQ">Name of Product</p>
+                    <input type="text" class="form-control" name="name" id="KTDEPProductName0" />
+                </div>
+                <div class="col-md-1">
+                    <p class="titleQ">Dosis</p>
+                    <p class="SubtitleQ">Dosage</p>
+                    <input type="text" class="form-control" name="name" id="KTDEPDossage0" />
+                </div>
+                <div class="col-md-1">
+                    <p class="titleQ">Frekuensi</p>
+                    <p class="SubtitleQ">Frequency</p>
+                    <input type="text" class="form-control" name="name" id="KTDEPFrequency0" />
+                </div>
+                <div class="col-md-2">
+                    <p class="titleQ">Rute</p>
+                    <p class="SubtitleQ">Route</p>
+                    <input type="text" class="form-control" name="name" id="KTDEPRoute0" />
+                </div>
+                <div class="col-md-2">
+                    <p class="titleQ">Tanggal mulai</p>
+                    <p class="SubtitleQ">Start Date</p>
+                    <input type="date" class="form-control" name="name" id="KTDEPStartDate0" />
+                </div>
+                <div class="col-md-2">
+                    <p class="titleQ">Durasi Terapi</p>
+                    <p class="SubtitleQ">Therapy Duration</p>
+                    <input type="text" class="form-control" name="name" id="KTDEPTherapyDuration0" />
+                </div>
+                <div class="col-md-2">
+                    <p class="titleQ">Indikasi</p>
+                    <p class="SubtitleQ">Indication</p>
+                    <input type="text" class="form-control" name="name" id="KTDEPIndication0" />
+
+                </div>
+            </div>
+            <br />
+            <div class="MoreItemInteralProductExternal">
+
+            </div>
+            <h4>List Produk</h4>
+            <hr />
+            <h4 class="title ">Kejadian Tidak Diinginkan</h4>
+            <h5 class="subtitle "><i>Adverse Event</i></h5>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Kapan kejadian tidak diinginkan mulai terjadi?  </p>
+                    <p class="SubtitleQ">When did the side effect start? </p>
+                    <input id="SideEffectStart" type="text" class="form-control" name="name" value="" />
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Kapan kejadian tidak diinginkan berhenti? </p>
+                    <p class="SubtitleQ">When did it stop? </p>
+                    <input type="text" id="SideEffectStop" class="form-control" name="name" value="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Seberapa parah kejadian tidak diinginkannya? (Pilih kotak yang sesuai) </p>
+                    <p class="SubtitleQ">How bad was the side effect? (Select all the boxes that apply) </p>
+                    <div class="checkbox">
+                        <label><input type="checkbox" id="sidefffect7" value="Tidak nyaman, tidak mempengaruhi aktivitas harian / Uncomfortable, but did not affect daily activities">Tidak nyaman, tidak mempengaruhi aktivitas harian / <i>Uncomfortable, but did not affect daily activities</i></label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="sidefffect0" type="checkbox" value="Membatasi aktivitas harian / Limitation of daily activities">Membatasi aktivitas harian /
+                            <i>Limitation of daily activities</i>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="sidefffect1" type="checkbox" value="Membutuhkan perawatan rumah sakit / Requiring hospitalization">
+                            Membutuhkan perawatan rumah sakit /
+                            <i>Requiring hospitalization</i>
+
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="sidefffect2" type="checkbox" value="Menyebabkan disabilitas serius jangka panjang / Caused long term serious disability">
+                            Menyebabkan disabilitas serius jangka panjang /
+                            <i>Caused long term serious disability</i>
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6" style="padding-top:30px;">
+
+                    <div class="checkbox">
+                        <label>
+                            <input id="sidefffect3" type="checkbox" value="Mengancam jiwa / Life threatening">
+                            Mengancam jiwa/
+                            <i>
+                                Life threatening
+                            </i>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="sidefffect4" type="checkbox" value="Menyebabkan kematian / Caused Death">
+                            Menyebabkan kematian /
+                            <i>Caused death</i>
+
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input id="sidefffect5" type="checkbox" value="Menyebabkan cacat lahir / Caused birth defect">Menyebabkan cacat lahir
+                            / <i>Caused birth defect</i>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input onclick="OthersSideEffect()" id="sidefffect6" type="checkbox" value="Lain Lain / Others">Lain Lain
+                            / <i>Others</i>
+                        </label>
+                    </div>
+
+                    <input style="display:none;" type="text" class="form-control" id="sidefffect8" name="name" value="" placeholder="Others Side Effect" />
+
+
+                </div>
+
+            </div>
+            @*<p class="titleQ">Deskripsikan kejadian tidak diinginkan (Juga memberikan rincian yang tersedia dari tes laboratorium atau pengobatan untuk kejadian tidak diinginkan, melampirkan formulir / lembar tambahan jika perlu)</p>
+                <p class="SubtitleQ">Describe the adverse event (also provide available details of lab tests or treatment taken for the adverse event, attach additional forms/sheet if necessary)</p>
+                <textarea class="form-control"></textarea>*@
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Apa yang dirasakan pasien sekarang? </p>
+                    <p class="SubtitleQ">How is the person feeling now </p>
+                    <select class="form-control" id="FeelingPatient">
+                        <option value="">Pilih / Choose</option>
+                        <option>Sembuh / Recovered </option>
+                        <option>Belum sembuh sempurna / Partially recovered</option>
+                        <option>Sembuh dengan gejala sisa / Recovered with sequele</option>
+                        <option>Sembuh tanpa gejala sisa / Recovered without sequele</option>
+                        <option>Tidak sembuh / Not recovered</option>
+                        <option>Memburuk / Getting worse</option>
+                        <option>Kematian / Death</option>
+                        <option>Tidak diketahui / Unknown</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <p class="titleQ">Sudahkah melaporkan kejadian tidak diinginkan ini kepada BPOM?</p>
+                    <p class="SubtitleQ">Have you reported this adverse event to BPOM? </p>
+                    <select class="form-control" id="ReportBPOM">
+                        <option value="">Pilih / Choose</option>
+                        <option value="Yes">Ya / Yes</option>
+                        <option value="No">Tidak / No</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="titleQ">Apakah Anda bersedia dihubungi untuk membantu Anda melengkapi data di formulir ini (bila diperlukan)? <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Are you willing to be contacted to help you complete this form (if necessary) ? <b class="required">*</b></p>
+                    <select class="form-control" id="WillingContacted">
+                        <option value="">Pilih / Choose</option>
+
+                        <option value="Ya">Ya / Yes</option>
+                        <option value="Tidak">Tidak / No</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+
+            <hr />
+            <input type="hidden" name="token_generate" id="token_generate" value="" />
+            <input type="hidden" id="MultiFileName" value="" />
+
+            @*captcha site key dev 6LfqeuMfAAAAADZPirJGVS-yI02w9Dn-typzn10i*@
+            @*captcha site key prod 6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38*@
+            <div id="CaptchaGoogle" style="height: 100px; position: relative; top: 154px;" class="g-recaptcha" data-sitekey="6LdkneMfAAAAAEryQT0hgFO4AofPwsdkCRhbnr38"></div>
+
+            <button type="submit" class="btn btn-success btnsubmitktd form-control btn-lg" style="height:50px;margin-top:150px;">
+                SUBMIT FORM
+            </button>
+        </form>
+        <br /><br />
+        <div class="row" style="margin-top:-340px;padding-top:40px;">
+            <form action="/" method="post" class="UploadFileSupportKTD" id="UploadFileSupport" enctype="multipart/form-data">
+                <div class="col-md-6">
+
+                    <p class="titleQ">Upload File Pendukung (Anda Bisa Mengupload Lebih dari Satu File )</p>
+
+                    <p style="margin-top:-11px;" class="SubtitleQ">Upload Supporting Files (You Can Uploaded More Than 1 File)</p>
+                    <input type="file" onclick="ShowUploadFiles()" id="files" name="Image" multiple class="form-control" required>
+
+
+
+                </div>
+                <div class="col-md-6">
+                    <button style="margin-top: 45px;" class="btn btn-primary UploadImage" type="submit">
+                        <i class="fa fa-upload"></i>
+
+                        Upload Files
+                    </button>
+                    <label class="loadingImage" style="margin-top:55px;">
+                        <i class="fa fa-spinner fa-spin fa-fw"></i> Loading ...
+                    </label>
+                    <label style="color: forestgreen; margin-top: 55px;" class="UploadedImage">
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        Uploaded
+                    </label>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+

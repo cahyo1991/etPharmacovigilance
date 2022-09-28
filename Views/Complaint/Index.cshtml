@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Complaint";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+    .footerweb{
+
+        margin-top:5px;
+    }
+</style>
+
+<div class="jumbotron boxcontentcomplaint" style="background-color: white; background-image: url('../../Asset/SHAPE.png'); background-position: right 168px; background-repeat: no-repeat; padding-bottom: 50px; background-size: cover;margin-bottom:0px!important;  ">
+    <div class="container" style="margin-top:70px;">
+        <h3 style="color: #00a2de; text-align: center; "> <b>Complaint Type</b> </h3>
+    </div>
+    <div class="container" style="margin-top:30px;">
+        <a href="/KTD">
+            <div class="col-md-3" style="padding:10px;">
+                <div style="border: 1px solid grey; border-radius: 30px;padding:5px;">
+                    <div style="height:170px;background-image:url('../../Asset/drugs.png'); background-size:contain; border-radius:20px;background-repeat:no-repeat;background-position:center;"></div>
+                    <h2 style="margin-top:-10px;margin-bottom:15px; text-align: center; color: #00a2de; font-size: 16px;">Formulir Kejadian Tidak Diinginkan (KTD)</h2>
+                    <p style="text-align: center; font-size: 10px; color: black;font-style:italic;">Formulir ini digunakan untuk pelaporan Kejadian Tidak Diinginkan (KTD) yang berkaitan dengan keamanan dan efikasi dari penggunaan produk atau obat.</p>
+
+                </div>
+
+            </div>
+        </a>
+        <a href="/KIPI">
+            <div class="col-md-3" style="padding:10px;">
+                <div style="border: 1px solid grey; border-radius: 30px; padding: 5px; height: 295px;">
+                    <div style="height: 170px; background-image: url('../../Asset/vaccine.png'); background-size: contain; border-radius: 20px; background-repeat: no-repeat; background-position: center;"></div>
+                    <h2 style="margin-top:-10px;margin-bottom:15px; text-align: center; color: #00a2de; font-size: 16px;">Formulir Kejadian Ikutan Pasca Imunisasi (KIPI)</h2>
+                    <p style="text-align: center; font-size: 10px; color: black;font-style:italic;">Formulir ini digunakan untuk pelaporan Kejadian Ikutan Pasca Imunisasi (KIPI) yang berkaitan dengan penggunaan produk vaksin.</p>
+
+                </div>
+
+            </div>
+        </a>
+        <a href="/QA">
+            <div class="col-md-3" style="padding:10px;">
+                <div style="border: 1px solid grey; border-radius: 30px; padding: 5px; height: 295px;">
+                    <div style="height:170px;background-image:url('../../Asset/qa.png'); background-size:contain; border-radius:20px;background-repeat:no-repeat;background-position:center;"></div>
+                    <h2 style="margin-top:-10px;margin-bottom:15px; text-align: center; color: #00a2de; font-size: 16px;">Formulir Keluhan Produk</h2>
+                    <p style="text-align: center; font-size: 10px; color: black;font-style:italic;">Formulir ini digunakan untuk pelaporan yang berkaitan dengan keluhan teknis, mutu, atau pemalsuan  dari produk obat.</p>
+
+                </div>
+
+            </div>
+        </a>
+        <a href="/MedicalInquiry">
+            <div class="col-md-3" style="padding:10px;">
+                <div style="border: 1px solid grey; border-radius: 30px;padding:5px;height: 295px;">
+                    <div style="height:170px;background-image:url('../../Asset/drugs.png'); background-size:contain; border-radius:20px;background-repeat:no-repeat;background-position:center;"></div>
+                    <h2 style="margin-top:-10px;margin-bottom:15px; text-align: center; color: #00a2de; font-size: 16px;">Formulir Pertanyaan Medis Untuk Produk</h2>
+                    <p style="text-align: center; font-size: 10px; color: black;font-style:italic;">Formulir ini digunakan untuk mendapatkan informasi dan/atau permintaan referensi medis seputar produk atau obat.</p>
+
+                </div>
+
+            </div>
+        </a>
+
+
+
+    </div>
+    <div class="container" style="margin-top:30px;">
+        <div class="col-md-4" style="padding:10px;"></div>
+
+    </div>
+</div>
+

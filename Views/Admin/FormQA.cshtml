@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "FormQA";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>FormQA</h2>
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+<div class="jumbotron" style="background-image: url('../../Asset/bgslider.png'); background-position: right;height:100%;">
+
+    <div class="container well" style="background:white;padding:20px;">
+        <h3 class="title">Header Laporan</h3>
+        <table class="table table-bordered HeaderDocQA">
+            <thead>
+                <tr>
+                    <th>No Document</th>
+                    <th>Effective Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        </table>
+        <hr />
+        <h3 class="title">List Input Form Quality Assurance</h3>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-bordered ListFormQA">
+                <thead>
+                    <tr>
+                        <td>No</td>
+                        <td>Tanggal Laporan</td>
+                        <td>Nama Pelapor</td>
+                        <td>No Telephone</td>
+                        <td>Nama Produk</td>
+                        <td>Kategori Keluhan</td>
+                        <td>Deskripsi Keluhan</td>
+                        <td>Penerima Laporan</td>
+                        <td>Penerima Laporan</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<form action="/" method="post" id="UpdatePenerima">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Form Penerima Laporan</h4>
+                </div>
+                <div class="modal-body">
+                    <label>Penerima Laporan <b style="color:red;">*</b></label>
+                    <input type="text" id="Receiver" name="name" value="" class="form-control" required />
+                    <input type="hidden" id="IdLaporan" value="" />
+                    <label>Kriteria Keluhan <b style="color:red;">*</b></label>
+                    <select class="form-control" id="QAIdComplaintCriteria">
+                        <option value="value">text</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+<!-- Modal -->
+<form action="/" method="post" id="UpdateHeaderQA">
+    <div class="modal fade" id="modalHeaderLaporan" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Header Laporan</h4>
+                </div>
+                <div class="modal-body">
+                    <label>No Document <b style="color:red;">*</b></label>
+                    <input type="text" id="zNoDocument" name="name" value="" class="form-control" required />
+                    <label>Effective Date<b style="color:red;">*</b></label>
+                    <input type="date" id="zEffectiveDate" name="name" value="" class="form-control" required />
+                    <input type="hidden" id="zId" value="" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

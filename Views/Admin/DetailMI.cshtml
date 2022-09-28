@@ -1,0 +1,200 @@
+﻿
+@{
+    ViewBag.Title = "Detail Medical Inquiry";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .title {
+        background-color: #00a0e0;
+        padding: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        margin-top: -5px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .titleQ {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+
+    .SubtitleQ {
+        margin-top: -20px;
+        font-size: 14px !important;
+        font-style: italic;
+        margin-bottom: 4px !important;
+    }
+
+    .black {
+        background-color: grey !important;
+        margin-top: -10px !important;
+        padding: 4px !important;
+        text-align: left !important;
+    }
+
+    .leftmargin {
+        text-align: left !important;
+    }
+
+    .required {
+        color: red;
+    }
+</style>
+
+<div class="jumbotron" style="background-image: url('../../Asset/bgslider.png'); background-position: right;">
+    <div class="container" style="padding-top:40px;">
+        <form action="/" method="post" id="InsertFormMI">
+
+
+            <button class="btn btn-default" id="printPageButton" style="margin-bottom:20px;" onClick="window.print();"> <i class="fa fa-print"></i>  Print / Save </button>
+            <table class="table-bordered" style="width:100%;">
+                <tr>
+                    <td rowspan="2" style="padding:20px;">
+                        <img style="width:100px;" src="~/Asset/Etana_logo.png" class="img-responsive" alt="Alternate Text" />
+                        <br />
+                        <h5 class="headertitle">PT ETANA BIOTECHNOLOGIES INDONESIA  </h5>
+                    </td>
+
+                    <td rowspan="2" style="padding:20px;">
+                        <center>
+                            <h4 class="headertitle">Formulir Pertanyaan/Informasi Medis</h4>
+                        </center>
+                        <center>
+                            <h4 class="headertitle"> <I>Medical Inquiry Form</I></h4>
+                        </center>
+                        <center>
+                            <h4 class="headertitle" style="font-size:15px;"> <I id="LetterNo"></I></h4>
+                        </center>
+                    </td>
+                    <!--<td style="padding:20px;">
+            <h4 class="headertitle">Document No :</h4>
+            <h4 class="headertitle">-->
+                    @*@NoDocument.Replace("_", "/")*@
+                    <!--</h4>
+            </td>
+            <td style="padding:20px;">
+                <h4 class="headertitle">Effective Date :</h4>
+                <h4 class="headertitle">-->
+                    @*@EffectiveDate.Replace("_", "/")*@
+                    <!--</h4>
+            </td>-->
+                </tr>
+
+
+
+
+            </table>
+
+
+
+            <hr />
+            <br />
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">Nama Product<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Product Name <b class="required">*</b></p>
+                    <input type="text" class="form-control" id="ProductName" name="name" value="" />
+
+
+                </div>
+                <div class="col-md-12">
+                    <p class="titleQ">Pertanyaan<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Question <b class="required">*</b></p>
+                    <textarea class="form-control" id="Question" required></textarea>
+
+                </div>
+
+            </div>
+
+            <h4 class="title">Silakan Masukkan Informasi Kontak Anda</h4>
+            <h5 class="subtitle"><i>Please Enter Your Contact Information</i></h5>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="titleQ">Nama<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Name <b class="required">*</b></p>
+                    <input type="text" class="form-control" name="name" value="" id="Name" />
+                </div>
+                <div class="col-md-4">
+                    <p class="titleQ">Pilih Yang Sesuai Dengan Anda<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Choose the appropriate one for you <b class="required">*</b></p>
+                    <input type="text" class="form-control" id="Approriate" name="name" value="" />
+                    <br />
+
+                </div>
+
+                <div class="col-md-4">
+                    <p class="titleQ">Telepon<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Telephone <b class="required">*</b></p>
+                    <input type="number" name="name" value="" required class="form-control" id="Telephone" />
+
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="titleQ">Email<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Email <b class="required">*</b></p>
+                    <input type="email" required class="form-control" id="Email" name="name" value="" />
+                </div>
+                <div class="col-md-4">
+                    <p class="titleQ">Negara<b class="required">*</b> </p>
+                    <p class="SubtitleQ">Country<b class="required">*</b></p>
+                    <input type="text" required class="form-control" id="Country" name="name" value="" />
+                </div>
+                <div class="col-md-4">
+                    <p class="titleQ">Laporan Di Terima Oleh <b class="required">*</b> </p>
+                    <p class="SubtitleQ">Received By <b class="required">*</b></p>
+                    <input type="text" required class="form-control" id="ReceivedBy" name="name" value="" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="titleQ">File Pendukung</p>
+                    <p class="SubtitleQ">Supporting Files</p>
+
+                    <div class="SupportingFiles">
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </form>
+
+
+        <br />
+        <br />
+
+     
+
+
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+
+<script>
+    var Id = '@Request["Idx"].ToString()';
+</script>
